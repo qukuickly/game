@@ -61,6 +61,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            cursor: pointer;
         }
 
         .user-info {
@@ -80,6 +81,7 @@
             color: white;
             font-weight: 600;
             font-size: 1.1rem;
+            cursor: pointer;
         }
 
         /* Balance Display */
@@ -130,6 +132,7 @@
             padding: 0 20px 80px;
             scrollbar-width: thin;
             scrollbar-color: var(--primary-light) transparent;
+            position: relative;
         }
 
         .content::-webkit-scrollbar {
@@ -145,6 +148,30 @@
             border-radius: 10px;
         }
 
+        /* Page transitions */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+        }
+
+        .page.exit {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        /* Section Titles */
         .section-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -274,6 +301,182 @@
             color: var(--success-color);
         }
 
+        /* All Games Page */
+        .games-category {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-title i {
+            color: var(--primary-color);
+        }
+
+        /* History Page */
+        .history-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 20px;
+            padding: 24px;
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .history-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px;
+        }
+
+        .stat-card {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Profile Page */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 20px;
+            padding: 30px 24px;
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border: 4px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-since {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: -30px 20px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-stat {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 20px 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .profile-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+
+        .profile-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-section {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 0 20px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-section-title i {
+            color: var(--primary-color);
+        }
+
+        .settings-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .settings-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
         /* Disclaimer */
         .disclaimer {
             background-color: #fef3c7;
@@ -312,6 +515,7 @@
             transition: var(--transition);
             padding: 8px 16px;
             border-radius: 16px;
+            cursor: pointer;
         }
 
         .nav-item.active {
@@ -329,53 +533,97 @@
             font-weight: 500;
         }
 
-        /* Page Transitions */
-        .page {
+        /* Modal */
+        .modal {
             display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .page.active {
-            display: block;
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
             opacity: 1;
         }
 
-        /* Other pages placeholder styles */
-        .page-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .placeholder-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .placeholder-title {
-            font-size: 1.8rem;
+        .modal-title {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             color: var(--text-primary);
         }
 
-        .placeholder-text {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            max-width: 300px;
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            margin-top: 12px;
         }
 
         /* Responsive adjustments */
@@ -386,6 +634,11 @@
             
             .balance-amount {
                 font-size: 2rem;
+            }
+            
+            .history-stats,
+            .profile-stats {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -408,14 +661,14 @@
 <body>
     <!-- Top App Bar -->
     <header class="app-bar">
-        <div class="app-title">SkillPlay</div>
+        <div class="app-title" id="appTitle">SkillPlay</div>
         <div class="user-info">
             <div class="user-avatar" id="userAvatar">U</div>
         </div>
     </header>
 
-    <!-- Main Content Area (changes based on route) -->
-    <main class="content">
+    <!-- Main Content Area -->
+    <main class="content" id="mainContent">
         <!-- Home Page -->
         <section id="home-page" class="page active">
             <!-- Balance Card -->
@@ -465,45 +718,8 @@
 
             <!-- Recent Activity -->
             <h2 class="section-title">Recent Activity</h2>
-            <div class="activity-list">
-                <div class="activity-item">
-                    <div class="activity-icon" style="background-color: #f59e0b;">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="activity-details">
-                        <div class="activity-game">Quick Trivia</div>
-                        <div class="activity-info">
-                            <span>Today, 10:45 AM</span>
-                            <span class="activity-points">+ ₹ 120</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="activity-item">
-                    <div class="activity-icon" style="background-color: #10b981;">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <div class="activity-details">
-                        <div class="activity-game">Pattern Puzzle</div>
-                        <div class="activity-info">
-                            <span>Yesterday, 3:20 PM</span>
-                            <span class="activity-points">+ ₹ 85</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="activity-item">
-                    <div class="activity-icon" style="background-color: #8b5cf6;">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <div class="activity-details">
-                        <div class="activity-game">Word Challenge</div>
-                        <div class="activity-info">
-                            <span>Apr 12, 11:15 AM</span>
-                            <span class="activity-points">+ ₹ 65</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="activity-list" id="recentActivity">
+                <!-- Will be populated by JavaScript -->
             </div>
 
             <!-- Disclaimer -->
@@ -514,78 +730,281 @@
 
         <!-- Games Page -->
         <section id="games-page" class="page">
-            <div class="page-placeholder">
-                <div class="placeholder-icon">
-                    <i class="fas fa-gamepad"></i>
+            <h2 class="section-title">All Games</h2>
+            
+            <div class="games-category">
+                <h3 class="category-title"><i class="fas fa-brain"></i> Brain Teasers</h3>
+                <div class="games-grid">
+                    <div class="game-card" data-game="trivia">
+                        <div class="game-icon trivia">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="game-title">Quick Trivia</h3>
+                        <p class="game-desc">General knowledge challenge</p>
+                    </div>
+                    
+                    <div class="game-card" data-game="math">
+                        <div class="game-icon" style="background: linear-gradient(135deg, #ef4444, #f87171);">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="game-title">Math Rush</h3>
+                        <p class="game-desc">Solve equations quickly</p>
+                    </div>
                 </div>
-                <h2 class="placeholder-title">All Games</h2>
-                <p class="placeholder-text">Browse and select from our collection of skill-based games. Each game tests different abilities and awards virtual points.</p>
+            </div>
+            
+            <div class="games-category">
+                <h3 class="category-title"><i class="fas fa-puzzle-piece"></i> Puzzles</h3>
+                <div class="games-grid">
+                    <div class="game-card" data-game="puzzle">
+                        <div class="game-icon puzzle">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3 class="game-title">Pattern Puzzle</h3>
+                        <p class="game-desc">Visual pattern recognition</p>
+                    </div>
+                    
+                    <div class="game-card" data-game="sudoku">
+                        <div class="game-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <h3 class="game-title">Mini Sudoku</h3>
+                        <p class="game-desc">Number placement puzzle</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="games-category">
+                <h3 class="category-title"><i class="fas fa-font"></i> Word Games</h3>
+                <div class="games-grid">
+                    <div class="game-card" data-game="word">
+                        <div class="game-icon word">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h3 class="game-title">Word Challenge</h3>
+                        <p class="game-desc">Create words from letters</p>
+                    </div>
+                    
+                    <div class="game-card" data-game="anagram">
+                        <div class="game-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3 class="game-title">Anagram Attack</h3>
+                        <p class="game-desc">Rearrange letters to form words</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                All games award virtual points (₹) based on skill. No real money involved.
             </div>
         </section>
 
         <!-- History Page -->
         <section id="history-page" class="page">
-            <div class="page-placeholder">
-                <div class="placeholder-icon">
-                    <i class="fas fa-history"></i>
+            <div class="history-header">
+                <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Game History</h2>
+                <p>Track your skill progress and earnings</p>
+            </div>
+            
+            <div class="history-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalGames">0</div>
+                    <div class="stat-label">Total Games Played</div>
                 </div>
-                <h2 class="placeholder-title">Game History</h2>
-                <p class="placeholder-text">View your complete game history, performance statistics, and virtual point earnings over time.</p>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPoints">₹ 0</div>
+                    <div class="stat-label">Total Points Earned</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Recent Games</h2>
+            <div class="activity-list" id="fullHistory">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <div class="disclaimer">
+                Game history is stored locally on your device and may be cleared.
             </div>
         </section>
 
         <!-- Profile Page -->
         <section id="profile-page" class="page">
-            <div class="page-placeholder">
-                <div class="placeholder-icon">
-                    <i class="fas fa-user"></i>
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+                <div class="profile-name" id="profileName">User</div>
+                <div class="profile-since">Member since April 2024</div>
+            </div>
+            
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <div class="profile-stat-value" id="profileGames">0</div>
+                    <div class="profile-stat-label">Games</div>
                 </div>
-                <h2 class="placeholder-title">Your Profile</h2>
-                <p class="placeholder-text">Manage your account settings, view achievements, and check your skill rankings.</p>
+                <div class="profile-stat">
+                    <div class="profile-stat-value" id="profileWins">0</div>
+                    <div class="profile-stat-label">Wins</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value" id="profileStreak">0</div>
+                    <div class="profile-stat-label">Day Streak</div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3 class="profile-section-title"><i class="fas fa-user-cog"></i> Account Settings</h3>
+                <div class="settings-item" id="editNameBtn">
+                    <div class="settings-label">
+                        <div class="settings-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 500;">Display Name</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);" id="currentName">User</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+                </div>
+                
+                <div class="settings-item" id="resetDataBtn">
+                    <div class="settings-label">
+                        <div class="settings-icon">
+                            <i class="fas fa-eraser"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 500;">Reset Game Data</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Clear history and points</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3 class="profile-section-title"><i class="fas fa-info-circle"></i> About</h3>
+                <div class="disclaimer" style="margin: 0;">
+                    <strong>SkillPlay Platform</strong><br>
+                    Version 1.0.0<br><br>
+                    This is a skill-based entertainment platform. The ₹ shown represents virtual points only with no monetary value. This is not a gambling or betting website.
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="#home" class="nav-item active" data-route="home">
+        <a class="nav-item active" data-route="home">
             <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
-        <a href="#games" class="nav-item" data-route="games">
+        <a class="nav-item" data-route="games">
             <i class="fas fa-gamepad nav-icon"></i>
             <span class="nav-label">Games</span>
         </a>
-        <a href="#history" class="nav-item" data-route="history">
+        <a class="nav-item" data-route="history">
             <i class="fas fa-history nav-icon"></i>
             <span class="nav-label">History</span>
         </a>
-        <a href="#profile" class="nav-item" data-route="profile">
+        <a class="nav-item" data-route="profile">
             <i class="fas fa-user nav-icon"></i>
             <span class="nav-label">Profile</span>
         </a>
     </nav>
 
+    <!-- Edit Name Modal -->
+    <div class="modal" id="editNameModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Edit Display Name</h3>
+            <div class="input-group">
+                <label class="input-label">Your Name</label>
+                <input type="text" class="input-field" id="nameInput" placeholder="Enter your name" maxlength="20">
+            </div>
+            <button class="button" id="saveNameBtn">Save Changes</button>
+            <button class="button button-secondary" id="cancelNameBtn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Reset Data Modal -->
+    <div class="modal" id="resetDataModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Reset Game Data</h3>
+            <p style="margin-bottom: 20px; color: var(--text-secondary); line-height: 1.5;">
+                This will reset all your game data including:
+                <br>• Virtual points balance (₹)
+                <br>• Game history
+                <br>• Statistics
+                <br><br>
+                This action cannot be undone.
+            </p>
+            <button class="button" style="background: linear-gradient(135deg, #ef4444, #f87171);" id="confirmResetBtn">Reset All Data</button>
+            <button class="button button-secondary" id="cancelResetBtn">Cancel</button>
+        </div>
+    </div>
+
     <script>
         // State Management
         const AppState = {
-            username: localStorage.getItem('username') || 'User',
-            balance: parseInt(localStorage.getItem('balance')) || 1250,
-            lastRoute: localStorage.getItem('lastRoute') || 'home',
-            gameHistory: JSON.parse(localStorage.getItem('gameHistory')) || []
+            username: localStorage.getItem('skillplay_username') || 'Player',
+            balance: parseInt(localStorage.getItem('skillplay_balance')) || 1250,
+            lastRoute: localStorage.getItem('skillplay_lastRoute') || 'home',
+            gameHistory: JSON.parse(localStorage.getItem('skillplay_gameHistory')) || [],
+            stats: JSON.parse(localStorage.getItem('skillplay_stats')) || {
+                totalGames: 0,
+                totalWins: 0,
+                currentStreak: 0,
+                lastPlayDate: null
+            }
         };
+
+        // Initialize with sample history if empty
+        if (AppState.gameHistory.length === 0) {
+            AppState.gameHistory = [
+                { game: "Quick Trivia", points: 120, result: "win", timestamp: Date.now() - 86400000 },
+                { game: "Pattern Puzzle", points: 85, result: "win", timestamp: Date.now() - 172800000 },
+                { game: "Word Challenge", points: 65, result: "win", timestamp: Date.now() - 259200000 }
+            ];
+            saveGameHistory();
+        }
 
         // DOM Elements
         const balanceAmountEl = document.getElementById('balanceAmount');
         const userAvatarEl = document.getElementById('userAvatar');
+        const profileAvatarEl = document.getElementById('profileAvatar');
+        const profileNameEl = document.getElementById('profileName');
+        const currentNameEl = document.getElementById('currentName');
         const navItems = document.querySelectorAll('.nav-item');
         const pages = document.querySelectorAll('.page');
+        const appTitleEl = document.getElementById('appTitle');
+        const mainContentEl = document.getElementById('mainContent');
+        
+        // History page elements
+        const totalGamesEl = document.getElementById('totalGames');
+        const totalPointsEl = document.getElementById('totalPoints');
+        const recentActivityEl = document.getElementById('recentActivity');
+        const fullHistoryEl = document.getElementById('fullHistory');
+        
+        // Profile page elements
+        const profileGamesEl = document.getElementById('profileGames');
+        const profileWinsEl = document.getElementById('profileWins');
+        const profileStreakEl = document.getElementById('profileStreak');
+        
+        // Modal elements
+        const editNameModal = document.getElementById('editNameModal');
+        const resetDataModal = document.getElementById('resetDataModal');
+        const nameInput = document.getElementById('nameInput');
+        const saveNameBtn = document.getElementById('saveNameBtn');
+        const cancelNameBtn = document.getElementById('cancelNameBtn');
+        const confirmResetBtn = document.getElementById('confirmResetBtn');
+        const cancelResetBtn = document.getElementById('cancelResetBtn');
+        const editNameBtn = document.getElementById('editNameBtn');
+        const resetDataBtn = document.getElementById('resetDataBtn');
 
         // Initialize the app
         function initApp() {
             // Load user data
             updateBalanceDisplay();
-            updateUserAvatar();
+            updateUserDisplay();
+            updateStatsDisplay();
             
             // Set up routing
             setupRouting();
@@ -593,34 +1012,153 @@
             // Set up game card interactions
             setupGameCards();
             
+            // Set up modal interactions
+            setupModals();
+            
+            // Set up other interactions
+            setupEventListeners();
+            
             // Load last active route
-            setTimeout(() => navigateTo(AppState.lastRoute, false), 100);
+            setTimeout(() => {
+                navigateTo(AppState.lastRoute, false);
+                updateActivityLists();
+            }, 100);
         }
 
         // Update balance display
         function updateBalanceDisplay() {
             balanceAmountEl.textContent = AppState.balance.toLocaleString();
-            localStorage.setItem('balance', AppState.balance);
+            localStorage.setItem('skillplay_balance', AppState.balance);
         }
 
-        // Update user avatar with initials
-        function updateUserAvatar() {
+        // Update user display
+        function updateUserDisplay() {
             const initials = AppState.username.charAt(0).toUpperCase();
             userAvatarEl.textContent = initials;
-            localStorage.setItem('username', AppState.username);
+            profileAvatarEl.textContent = initials;
+            profileNameEl.textContent = AppState.username;
+            currentNameEl.textContent = AppState.username;
+            localStorage.setItem('skillplay_username', AppState.username);
+        }
+
+        // Update stats display
+        function updateStatsDisplay() {
+            // Calculate totals from history
+            const totalPoints = AppState.gameHistory.reduce((sum, game) => sum + game.points, 0);
+            
+            // Update history page
+            totalGamesEl.textContent = AppState.gameHistory.length;
+            totalPointsEl.textContent = `₹ ${totalPoints.toLocaleString()}`;
+            
+            // Update profile page
+            profileGamesEl.textContent = AppState.gameHistory.length;
+            profileWinsEl.textContent = AppState.stats.totalWins || AppState.gameHistory.filter(g => g.result === "win").length;
+            profileStreakEl.textContent = AppState.stats.currentStreak || 0;
+        }
+
+        // Update activity lists
+        function updateActivityLists() {
+            // Clear existing content
+            recentActivityEl.innerHTML = '';
+            fullHistoryEl.innerHTML = '';
+            
+            // Sort history by timestamp (newest first)
+            const sortedHistory = [...AppState.gameHistory].sort((a, b) => b.timestamp - a.timestamp);
+            
+            // Add recent activities (last 3)
+            const recentActivities = sortedHistory.slice(0, 3);
+            recentActivities.forEach(activity => {
+                recentActivityEl.appendChild(createActivityItem(activity));
+            });
+            
+            // Add all activities to history page
+            sortedHistory.forEach(activity => {
+                fullHistoryEl.appendChild(createActivityItem(activity));
+            });
+        }
+
+        // Create activity item element
+        function createActivityItem(activity) {
+            const item = document.createElement('div');
+            item.className = 'activity-item';
+            
+            // Get game icon
+            let iconClass = 'fas fa-gamepad';
+            let iconColor = '#6c63ff';
+            
+            if (activity.game.includes('Trivia')) {
+                iconClass = 'fas fa-brain';
+                iconColor = '#f59e0b';
+            } else if (activity.game.includes('Puzzle')) {
+                iconClass = 'fas fa-puzzle-piece';
+                iconColor = '#10b981';
+            } else if (activity.game.includes('Word')) {
+                iconClass = 'fas fa-font';
+                iconColor = '#8b5cf6';
+            } else if (activity.game.includes('Math')) {
+                iconClass = 'fas fa-calculator';
+                iconColor = '#ef4444';
+            }
+            
+            // Format date
+            const date = new Date(activity.timestamp);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            let dateStr;
+            if (diffDays === 0) {
+                dateStr = 'Today';
+            } else if (diffDays === 1) {
+                dateStr = 'Yesterday';
+            } else if (diffDays < 7) {
+                dateStr = `${diffDays} days ago`;
+            } else {
+                dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            }
+            
+            item.innerHTML = `
+                <div class="activity-icon" style="background-color: ${iconColor};">
+                    <i class="${iconClass}"></i>
+                </div>
+                <div class="activity-details">
+                    <div class="activity-game">${activity.game}</div>
+                    <div class="activity-info">
+                        <span>${dateStr}</span>
+                        <span class="activity-points">+ ₹ ${activity.points.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            return item;
         }
 
         // Set up hash-based routing
         function setupRouting() {
             // Handle initial route
-            const initialHash = window.location.hash.substring(1) || 'home';
-            navigateTo(initialHash, false);
+            const hash = window.location.hash.substring(1) || 'home';
+            const route = hash.split('#')[0]; // Get base route, ignore parameters
             
             // Handle hash changes
             window.addEventListener('hashchange', handleHashChange);
             
             // Handle back/forward buttons
             window.addEventListener('popstate', handleHashChange);
+            
+            // Set up navigation clicks
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const route = this.getAttribute('data-route');
+                    navigateTo(route);
+                });
+            });
+            
+            // App title click goes home
+            appTitleEl.addEventListener('click', () => navigateTo('home'));
+            
+            // User avatar click goes to profile
+            userAvatarEl.addEventListener('click', () => navigateTo('profile'));
         }
 
         // Handle hash changes
@@ -638,11 +1176,20 @@
                 route = 'home';
             }
             
-            // Update active page
+            // Update active page with transition
             pages.forEach(page => {
-                page.classList.remove('active');
+                if (page.classList.contains('active')) {
+                    page.classList.remove('active');
+                    page.classList.add('exit');
+                    setTimeout(() => {
+                        page.classList.remove('exit');
+                    }, 300);
+                }
+                
                 if (page.id === `${route}-page`) {
-                    setTimeout(() => page.classList.add('active'), 10);
+                    setTimeout(() => {
+                        page.classList.add('active');
+                    }, 10);
                 }
             });
             
@@ -661,22 +1208,31 @@
             
             // Store last route
             AppState.lastRoute = route;
-            localStorage.setItem('lastRoute', route);
+            localStorage.setItem('skillplay_lastRoute', route);
             
             // Parse hash parameters if present
-            parseHashParameters();
+            parseHashParameters(route);
+            
+            // Update page-specific content
+            if (route === 'history' || route === 'profile') {
+                updateStatsDisplay();
+                updateActivityLists();
+            }
         }
 
         // Parse hash parameters for shared state
-        function parseHashParameters() {
+        function parseHashParameters(route) {
             const hash = window.location.hash.substring(1);
             const parts = hash.split('#');
             
             // If there are parameters (e.g., /history#username#balance)
             if (parts.length > 1) {
-                console.log('Hash parameters detected:', parts.slice(1));
-                // Note: In a real app, you would validate and use these parameters safely
-                // For this demo, we'll just log them
+                console.log('Hash parameters detected for route:', route, 'Parameters:', parts.slice(1));
+                // In a real app, you would validate and use these parameters safely
+                // For security, we only use them for display purposes if validated
+                
+                // Example: If someone shares /history#Player#2500, we could show "Viewing Player's history with ₹2500"
+                // But for this demo, we'll just log them
             }
         }
 
@@ -700,13 +1256,16 @@
             });
         }
 
-        // Simulate starting a game (demo functionality)
+        // Simulate starting a game
         function simulateGameStart(game) {
             const gameNames = {
                 trivia: 'Quick Trivia',
                 puzzle: 'Pattern Puzzle',
                 word: 'Word Challenge',
-                logic: 'Logic Grid'
+                logic: 'Logic Grid',
+                math: 'Math Rush',
+                sudoku: 'Mini Sudoku',
+                anagram: 'Anagram Attack'
             };
             
             const gameName = gameNames[game] || 'Skill Game';
@@ -717,8 +1276,8 @@
             
             // Simulate game playing and earning points
             setTimeout(() => {
-                // Earn random points between 10 and 100
-                const earnedPoints = Math.floor(Math.random() * 91) + 10;
+                // Earn random points between 10 and 150
+                const earnedPoints = Math.floor(Math.random() * 141) + 10;
                 AppState.balance += earnedPoints;
                 updateBalanceDisplay();
                 
@@ -726,20 +1285,126 @@
                 const gameEntry = {
                     game: gameName,
                     points: earnedPoints,
-                    date: new Date().toISOString(),
+                    result: "win",
                     timestamp: Date.now()
                 };
                 
                 AppState.gameHistory.unshift(gameEntry);
-                if (AppState.gameHistory.length > 50) {
-                    AppState.gameHistory = AppState.gameHistory.slice(0, 50);
+                saveGameHistory();
+                
+                // Update stats
+                AppState.stats.totalGames = (AppState.stats.totalGames || 0) + 1;
+                AppState.stats.totalWins = (AppState.stats.totalWins || 0) + 1;
+                
+                // Update streak
+                const today = new Date().toDateString();
+                if (AppState.stats.lastPlayDate !== today) {
+                    AppState.stats.currentStreak = (AppState.stats.currentStreak || 0) + 1;
+                    AppState.stats.lastPlayDate = today;
                 }
                 
-                localStorage.setItem('gameHistory', JSON.stringify(AppState.gameHistory));
+                saveStats();
+                
+                // Update displays
+                updateStatsDisplay();
+                updateActivityLists();
                 
                 // Show notification
                 showNotification(`You earned ₹ ${earnedPoints} from ${gameName}!`);
             }, 1500);
+        }
+
+        // Set up modal interactions
+        function setupModals() {
+            // Edit name
+            editNameBtn.addEventListener('click', () => {
+                nameInput.value = AppState.username;
+                editNameModal.classList.add('active');
+            });
+            
+            saveNameBtn.addEventListener('click', () => {
+                const newName = nameInput.value.trim();
+                if (newName && newName.length > 0) {
+                    AppState.username = newName.substring(0, 20);
+                    updateUserDisplay();
+                    editNameModal.classList.remove('active');
+                    showNotification('Name updated successfully!');
+                }
+            });
+            
+            cancelNameBtn.addEventListener('click', () => {
+                editNameModal.classList.remove('active');
+            });
+            
+            // Reset data
+            resetDataBtn.addEventListener('click', () => {
+                resetDataModal.classList.add('active');
+            });
+            
+            confirmResetBtn.addEventListener('click', () => {
+                // Reset all data
+                AppState.balance = 1000;
+                AppState.gameHistory = [];
+                AppState.stats = {
+                    totalGames: 0,
+                    totalWins: 0,
+                    currentStreak: 0,
+                    lastPlayDate: null
+                };
+                
+                // Save to localStorage
+                updateBalanceDisplay();
+                saveGameHistory();
+                saveStats();
+                
+                // Update displays
+                updateStatsDisplay();
+                updateActivityLists();
+                
+                resetDataModal.classList.remove('active');
+                showNotification('All game data has been reset.');
+                
+                // Navigate to home
+                navigateTo('home');
+            });
+            
+            cancelResetBtn.addEventListener('click', () => {
+                resetDataModal.classList.remove('active');
+            });
+            
+            // Close modals when clicking outside
+            [editNameModal, resetDataModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Set up other event listeners
+        function setupEventListeners() {
+            // Handle Escape key to close modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    editNameModal.classList.remove('active');
+                    resetDataModal.classList.remove('active');
+                }
+            });
+        }
+
+        // Save game history to localStorage
+        function saveGameHistory() {
+            // Keep only last 50 games
+            if (AppState.gameHistory.length > 50) {
+                AppState.gameHistory = AppState.gameHistory.slice(0, 50);
+            }
+            localStorage.setItem('skillplay_gameHistory', JSON.stringify(AppState.gameHistory));
+        }
+
+        // Save stats to localStorage
+        function saveStats() {
+            localStorage.setItem('skillplay_stats', JSON.stringify(AppState.stats));
         }
 
         // Show notification
